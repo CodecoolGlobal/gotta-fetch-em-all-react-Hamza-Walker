@@ -1,10 +1,11 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App'
-import './index.css'
+import React from "react"
+import ReactDOM from "react-dom/client"
+import "./index.css"
+import PokeApp from "./components/PokeApp"
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+// during development change 'defaultScene' to whatever scene you work on ;)
+ReactDOM.createRoot(document.querySelector("main")).render(
+	<React.StrictMode>
+		<PokeApp defaultScene="welcome" />
+	</React.StrictMode>
 )
