@@ -1,9 +1,11 @@
 import { useState } from "react"
-import WelcomeScene from "./Scenes/WelcomeScene"
-import NewPlayerScene from "./Scenes/NewPlayerScene"
-import StageSelectScene from "./Scenes/StageSelectScene"
+import { gameStateContext as GameStateContext } from "../contexts/GameStateContext"
+import WelcomeScene from "./scenes/WelcomeScene"
+import MenuScene from "./scenes/MenuScene"
+import StageSelectScene from "./scenes/StageSelectScene"
 
 export default function PokeApp({ defaultScene }) {
+	const [gameState, setGameState] = useState({})
 	const [currentScene, setCurrentScene] = useState(defaultScene || "welcome")
 
 	function nextScene(scene) {
@@ -12,19 +14,5 @@ export default function PokeApp({ defaultScene }) {
 		setCurrentScene(scene)
 	}
 
-	const scenes = {
-		welcome: WelcomeScene(nextScene),
-		newPlayer: NewPlayerScene(nextScene),
-		stageSelect: StageSelectScene(nextScene),
-
-		//TODO: remove the entry below once scenes are set in stone!
-		//			It's only to remind us of errors bc this wouldn't throw :\
-		error: (
-			<div className="bold">
-				SceneManager.jsx: scenes["<span className="error">{currentScene}</span>"] missing
-			</div>
-		)
-	}
-
-	return scenes[currentScene] ?? scenes.error
+	return <GameStateContext.Provider value={gameState}>{MenuScene(nextScene)}</GameStateContext.Provider>
 }

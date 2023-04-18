@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import Scene from "./Scene"
+import Scene from "../Scene"
 
 export default function WelcomeScene(sceneSwitch) {
 	const [remaining, setRemaining] = useState(3500)
@@ -10,7 +10,7 @@ export default function WelcomeScene(sceneSwitch) {
 				setRemaining(remaining - 1000)
 			}, 1000)
 		} else {
-			sceneSwitch("newPlayer")
+			sceneSwitch("menu")
 		}
 	}, [remaining])
 
