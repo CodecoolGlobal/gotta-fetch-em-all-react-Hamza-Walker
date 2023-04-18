@@ -20,7 +20,7 @@ export const PokemonList = () => {
         
         {pokemons.map((pokemon) =>
           <div key={`${pokemon.id}-${pokemon.name}`}>
-            <img src={pokemon.image} alt={pokemon.name} />
+            <img src={require(pokemon.image)} alt={pokemon.name} onClick={() => select(pokemon)} />
             <span>{pokemon.name}</span>
             <button onClick={() => select(pokemon)}>+</button>
           </div>

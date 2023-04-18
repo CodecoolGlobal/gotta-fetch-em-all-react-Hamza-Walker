@@ -9,12 +9,13 @@ export const PokemonProvider = (props) => {
   const fetchPokemonData = async () => {
     const defaultPokemons = ['bulbasaur', 'charmander', 'squirtle'];
     const newPokemons = [];
-
+    
     for (const pokemon of defaultPokemons) {
       const pokemonData = await getPokemonByName(pokemon);
-      const newPokemon = { id: pokemonData.id, name: pokemonData.name, image: pokemonData.sprites.front_default };
+      console.log(pokemonData.sprites.versions['generation-v']['black-white'].animated.front_default)
+      const newPokemon = { id: pokemonData.id, name: pokemonData.sprites.versions['generation-v']['black-white'].animated.front_default };
       newPokemons.push(newPokemon);
-      console.log(newPokemons)
+      // console.log(newPokemons)
     }
 
     setPokemons(newPokemons);
