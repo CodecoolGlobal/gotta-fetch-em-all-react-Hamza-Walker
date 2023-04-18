@@ -25,7 +25,7 @@ export const PokemonProvider = () => {
   }, []);
 
   const providerValue = {
-    pokemons,
+    pokemons
   };
 
   return (

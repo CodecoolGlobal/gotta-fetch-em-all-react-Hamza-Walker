@@ -1,7 +1,7 @@
 
 import {ShowLocations} from "./components/ShowLocations"
 import {PokemonProvider} from './components/PokemonContextApi'
-import PokemonList from './components/PokemonList'
+import {PokemonList} from './components/PokemonList'
 import './app.css' // <-- add this line to import the CSS file
 
 
@@ -15,7 +15,7 @@ function App() {
 
         <PokemonList/>
       <h1>hello</h1>
-      <ShowLocations/>
+      {/* <ShowLocations/> */}
     </div>
     </PokemonProvider>
 
