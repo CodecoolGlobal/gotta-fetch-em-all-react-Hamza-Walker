@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 
-export default function ShowLocations() {
+export const ShowLocations = () => {
     const [locData, setLocData] = useState()
     
     useEffect(() => {
