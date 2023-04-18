@@ -12,8 +12,9 @@ export const PokemonProvider = () => {
 
     for (const pokemon of defaultPokemons) {
       const pokemonData = await getPokemonByName(pokemon);
-      const newPokemon = { id: pokemonData.id, name: pokemonData.name };
+      const newPokemon = { id: pokemonData.id, name: pokemonData.name, image: pokemonData.sprites.front_default };
       newPokemons.push(newPokemon);
+      console.log(newPokemons)
     }
 
     setPokemons(newPokemons);

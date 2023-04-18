@@ -8,15 +8,17 @@ import './app.css' // <-- add this line to import the CSS file
 function App() {
 
   return (
+    <PokemonProvider>
     <div className="App">
-      <PokemonProvider>
+      
       <h2> Listing Pokémons</h2>
 
         <PokemonList/>
       <h1>hello</h1>
       <ShowLocations/>
-      </PokemonProvider>
     </div>
+    </PokemonProvider>
+
   )
 }
 
