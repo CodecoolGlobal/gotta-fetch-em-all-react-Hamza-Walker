@@ -18,13 +18,13 @@ export const PokemonList = () => {
       <div className="pokemons-list">
         <h3>Pokemons List</h3>
         
-        {/* {pokemons.map((pokemon) =>
+        {pokemons.map((pokemon) =>
           <div key={`${pokemon.id}-${pokemon.name}`}>
             <img src={pokemon.image} alt={pokemon.name} />
             <span>{pokemon.name}</span>
             <button onClick={() => select(pokemon)}>+</button>
           </div>
-        )} */}
+        )}
       </div>
     )
   }
