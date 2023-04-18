@@ -3,7 +3,7 @@ import { getPokemonByName } from './Utils';
 
 export const PokemonContext = createContext();
 
-export const PokemonProvider = () => {
+export const PokemonProvider = (props) => {
   const [pokemons, setPokemons] = useState([]);
 
   const fetchPokemonData = async () => {
@@ -30,6 +30,7 @@ export const PokemonProvider = () => {
 
   return (
     <PokemonContext.Provider value={providerValue}>
+      {props.children}
     </PokemonContext.Provider>
   )
 };
