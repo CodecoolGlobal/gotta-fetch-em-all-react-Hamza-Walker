@@ -13,7 +13,7 @@ export const PokemonProvider = (props) => {
     for (const pokemon of defaultPokemons) {
       const pokemonData = await getPokemonByName(pokemon);
       console.log(pokemonData.sprites.versions['generation-v']['black-white'].animated.front_default)
-      const newPokemon = { id: pokemonData.id, name: pokemonData.sprites.versions['generation-v']['black-white'].animated.front_default };
+      const newPokemon = { id: pokemonData.id, name:pokemonData.name ,image:pokemonData.sprites.versions['generation-v']['black-white'].animated.front_default };
       newPokemons.push(newPokemon);
       // console.log(newPokemons)
     }
