@@ -23,15 +23,33 @@ export const  locationImages = {
     "wayward-cave": "./src/assets/locations/wayward-cave.jpg",
   };
   
-  
   export async function getPokemonLocation(location) {
-    const response = await fetch(`https://pokeapi.co/api/v2/location?${location}`);
+    const response = await fetch(`https://pokeapi.co/api/v2/location/${location}`);
     const data = await response.json();
     return data;
       
   }
+  
   export async function getPokemonByName(name) {
-      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
-      const data = await response.json();
-      return data;
-    }
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+    const data = await response.json();
+    // console.log(data)
+    return data;
+  }
+export async function getPokemonLocationArea(areaId){
+  const response = await fetch(`https://pokeapi.co/api/v2/location-area/${areaId}`);
+  const data = await response.json();
+
+  return data;
+}
+
+export async function renderPokemonEncounters(pokemonEncounters) {
+  const pokemonElements = await Promise.all(
+    pokemonEncounters.map(async (pokemonName) => {
+      const pokemonData = await getPokemonByName(pokemonName);
+      return pokemonData;
+    })
+  );
+
+  return pokemonElements;
+}
