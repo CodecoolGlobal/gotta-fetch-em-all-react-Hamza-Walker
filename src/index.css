@@ -66,3 +66,16 @@ li img.selected {
 	grid-template-columns: repeat(5, 1fr);
 	gap: 0.25em;
 }
+.selected-img {
+	object-fit: cover;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 450px;
+	aspect-ratio: 1;
+
+}
+.gap-1{
+	gap: 1em;
+}
