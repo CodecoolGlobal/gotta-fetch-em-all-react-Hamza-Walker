@@ -1,3 +1,7 @@
+* {
+	outline: 1px dotted lightgray;
+}
+
 body {
 	display: flex;
 	flex-direction: column;
@@ -17,18 +21,45 @@ body {
 	color: red;
 }
 
-li {
+.flex-row {
+	display: flex;
+}
+
+/* li {
 	display: inline-block;
 	margin: 10px;
-  }
-  
-  li img {
+}
+
+li img {
 	width: 200px;
 	height: 200px;
 	border: 2px solid transparent;
 	cursor: pointer;
-  }
-  
-  li img.selected {
+}
+
+li img.selected {
 	border-color: red;
-  }
+} */
+
+.location-card {
+	position: relative;
+	width: 150px;
+	aspect-ratio: 1;
+}
+.location-card > img {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+.location-card > div {
+	position: absolute;
+	left: 1em;
+	top: 0.5em;
+}
+.grid-container {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 0.25em;
+}

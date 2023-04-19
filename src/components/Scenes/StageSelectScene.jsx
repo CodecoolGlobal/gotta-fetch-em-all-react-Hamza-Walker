@@ -31,22 +31,24 @@ export const StageSelectScene = ({ sceneSwitch }) => {
 	return (
 		<div>
 			<h1>Locations</h1>
-			<ul>
-				{locations.data.map(location => (
-					<li
-						key={location.name}
-						onClick={() => {
-							setLocations({ ...locations, selectedLocation: location })
-							console.log("Selected location:", location)
-						}}
-						className={locations.selectedLocation === location ? "selected" : ""}
-					>
-						{" "}
-						<img src={location.imgUrl} alt={location.name} />
-						<span>{location.name}</span>
-					</li>
-				))}
-			</ul>
+			<div className="flex-row">
+				<div className="grid-container">
+					{locations.data.map(location => (
+						<div
+							key={location.name}
+							onClick={() => {
+								setLocations({ ...locations, selectedLocation: location })
+								console.log("Selected location:", location)
+							}}
+							className={`location-card ${locations.selectedLocation === location ? "selected" : ""}`}
+						>
+							<img src={location.imgUrl} alt={location.name} />
+							<div>{location.name}</div>
+						</div>
+					))}
+				</div>
+				<div>Not in the grid anymore</div>
+			</div>
 		</div>
 	)
 }
