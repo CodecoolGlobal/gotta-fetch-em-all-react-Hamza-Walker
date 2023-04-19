@@ -49,11 +49,14 @@ li img.selected {
 	aspect-ratio: 1;
 }
 .location-card > img {
+	object-fit: cover;
 	position: absolute;
 	left: 0;
 	right: 0;
 	top: 0;
 	bottom: 0;
+	width: 150px;
+	aspect-ratio: 1;
 }
 .location-card > div {
 	position: absolute;
@@ -65,18 +68,30 @@ li img.selected {
 	grid-template-columns: repeat(5, 1fr);
 	gap: 0.25em;
 }
+.selected-img {
+	object-fit: cover;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 450px;
+	aspect-ratio: 1;
 
-.new-player-page {
-	display: flex;
-	flex-direction: column;
-	gap: 0.5em;
-}
+	.new-player-page {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5em;
+	}
 
-.starter-pokemon-selection {
-	gap: 0.25em;
+	.starter-pokemon-selection {
+		gap: 0.25em;
+	}
+	.starter-pokemon-selection > div {
+		padding: 0.5em 1em;
+		border: 1px solid black;
+		border-radius: 0.25em;
+	}
 }
-.starter-pokemon-selection > div {
-	padding: 0.5em 1em;
-	border: 1px solid black;
-	border-radius: 0.25em;
+.gap-1 {
+	gap: 1em;
 }
