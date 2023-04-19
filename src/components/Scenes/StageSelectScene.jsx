@@ -16,11 +16,12 @@ export const StageSelectScene = ({ sceneSwitch }) => {
 				return {
 					name: locationName,
 					id: pokemonLocationData.id,
-					imgUrl
+					imgUrl,
+					pokemonInArea: pokemonLocationData.pokemon
 				}
-			})
+			}) 
 		)
-
+		console.log(locations)
 		setLocations({ ...locations, data: locationData })
 	}
 
@@ -28,10 +29,11 @@ export const StageSelectScene = ({ sceneSwitch }) => {
 		fetchLocationData()
 	}, [])
 
+
 	return (
 		<div>
 			<h1>Locations</h1>
-			<div className="flex-row">
+			<div className="flex-row gap-1">
 				<div className="grid-container">
 					{locations.data.map(location => (
 						<div
@@ -47,8 +49,14 @@ export const StageSelectScene = ({ sceneSwitch }) => {
 						</div>
 					))}
 				</div>
-				<div>Not in the grid anymore</div>
-			</div>
+					<div className="selected-img-and-pokemons-div">
+						{locations.selectedLocation && (
+						<img src={locations.selectedLocation.imgUrl} alt={locations.selectedLocation.name} className="selected-img"/>
+							)}
+
+					</div>
+				</div>
 		</div>
 	)
 }
+
