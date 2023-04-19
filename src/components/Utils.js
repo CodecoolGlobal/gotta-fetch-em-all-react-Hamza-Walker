@@ -5,7 +5,7 @@ export const  locationImages = {
     "eterna-city": "./src/assets/locations/eterna-city.jpg",
     "pastoria-city": "./src/assets/locations/pastoria-city.jpg",
     "sunyshore-city": "./src/assets/locations/sunyshore-city.jpg",
-    "sinnoh-pokemon-league": "./src/assets/locations/sinnoh-pokemon-league.png",
+    "pokemon-league": "./src/assets/locations/sinnoh-pokemon-league.png",
     "oreburgh-mine": "./src/assets/locations/oreburgh-mine.png",
     "valley-windworks": "./src/assets/locations/valley-windworks.png",
     "eterna-forest": "./src/assets/locations/eterna-forest.jpg",
