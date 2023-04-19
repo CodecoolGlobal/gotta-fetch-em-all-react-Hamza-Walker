@@ -19,3 +19,54 @@ body {
 .error {
 	color: red;
 }
+
+.flex-row {
+	display: flex;
+}
+.flex-column {
+	display: flex;
+	flex-direction: column;
+}
+.align-centered {
+	justify-content: center;
+	align-items: center;
+}
+
+.location-card {
+	position: relative;
+	width: 150px;
+	aspect-ratio: 1;
+}
+.location-card > img {
+	object-fit: cover;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 150px;
+	aspect-ratio: 1;
+}
+.location-card > div {
+	position: absolute;
+	left: 1em;
+	top: 0.5em;
+}
+.grid-container {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 0.25em;
+}
+.selected-img {
+	object-fit: cover;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 450px;
+	aspect-ratio: 1;
+}
+
+.gap-1 {
+	gap: 1em;
+}
