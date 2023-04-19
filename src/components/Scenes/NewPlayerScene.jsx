@@ -7,8 +7,12 @@ export default function NewPlayerScene(sceneSwitch) {
 	return (
 		<Scene name="new-player">
 			<h2>New Player</h2>
-			<p>Here Players enter their name and select their starting pokemon.</p>
-			<p>Then moves on to stage select.</p>
+			<input type="text" id="player-name" placeholder="Please enter your name." />
+			<div className="starter-pokemon-selection flex-row">
+				<div>pokemon 1</div>
+				<div>pokemon 2</div>
+				<div>pokemon 3</div>
+			</div>
 			<button onClick={() => scene.nextScene("stageSelect")}>Next</button>
 		</Scene>
 	)

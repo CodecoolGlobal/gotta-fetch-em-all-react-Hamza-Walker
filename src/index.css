@@ -1,5 +1,7 @@
 * {
-	outline: 1px dotted lightgray;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 body {
@@ -62,4 +64,19 @@ li img.selected {
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
 	gap: 0.25em;
+}
+
+.new-player-page {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+}
+
+.starter-pokemon-selection {
+	gap: 0.25em;
+}
+.starter-pokemon-selection > div {
+	padding: 0.5em 1em;
+	border: 1px solid black;
+	border-radius: 0.25em;
 }
