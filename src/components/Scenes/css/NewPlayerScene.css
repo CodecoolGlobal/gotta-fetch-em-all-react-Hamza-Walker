@@ -1,0 +1,18 @@
+.new-player-scene {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+}
+
+.starter-pokemon-selection {
+	gap: 0.25em;
+}
+.starter-pokemon-selection > div {
+	padding: 0.5em 1em;
+	border: 1px solid black;
+	border-radius: 0.25em;
+}
+.starter-pokemon-selection .pokemon-card {
+	width: 100px;
+	height: 150px;
+}

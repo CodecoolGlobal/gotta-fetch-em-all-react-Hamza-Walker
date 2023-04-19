@@ -26,22 +26,14 @@ body {
 .flex-row {
 	display: flex;
 }
-
-/* li {
-	display: inline-block;
-	margin: 10px;
+.flex-column {
+	display: flex;
+	flex-direction: column;
 }
-
-li img {
-	width: 200px;
-	height: 200px;
-	border: 2px solid transparent;
-	cursor: pointer;
+.align-centered {
+	justify-content: center;
+	align-items: center;
 }
-
-li img.selected {
-	border-color: red;
-} */
 
 .location-card {
 	position: relative;
@@ -76,22 +68,8 @@ li img.selected {
 	bottom: 0;
 	width: 450px;
 	aspect-ratio: 1;
-
-	.new-player-page {
-		display: flex;
-		flex-direction: column;
-		gap: 0.5em;
-	}
-
-	.starter-pokemon-selection {
-		gap: 0.25em;
-	}
-	.starter-pokemon-selection > div {
-		padding: 0.5em 1em;
-		border: 1px solid black;
-		border-radius: 0.25em;
-	}
 }
+
 .gap-1 {
 	gap: 1em;
 }
