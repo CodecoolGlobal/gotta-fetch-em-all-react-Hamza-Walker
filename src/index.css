@@ -42,25 +42,32 @@ li img.selected {
 } */
 
 .location-card {
-	position: relative;
-	width: 150px;
-	aspect-ratio: 1;
+    position: relative;
+    width: 150px;
+    aspect-ratio: 1;
 }
 .location-card > img {
-	object-fit: cover;
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
-	width: 150px;
-	aspect-ratio: 1;
+    object-fit: cover;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 150px;
+    aspect-ratio: 1;
 }
 .location-card > div {
-	position: absolute;
-	left: 1em;
-	top: 0.5em;
+    position: absolute;
+    left: 1em;
+    top: 0.5em;
+    background-color: rgba(0,0,0,0.5);
+    padding: 0.5em;
+    color: white;
+    font-size: 0.9em;
+    font-weight: 600;
 }
+
+
 .grid-container {
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
