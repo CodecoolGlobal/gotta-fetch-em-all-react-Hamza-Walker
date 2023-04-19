@@ -4,7 +4,10 @@ import {locationImages , getPokemonLocation} from '../Utils'
 
 export const StageSelectScene = ({ sceneSwitch }) => {
   
-  const [locations, setLocations] = useState([]);
+  const [locations, setLocations] = useState({
+    data: [],
+    selectedLocation: null
+  });
 
   const fetchLocationData = async () => {
     const locationEntries = Object.entries(locationImages);
@@ -14,14 +17,13 @@ export const StageSelectScene = ({ sceneSwitch }) => {
       return {
         name: locationName,
         id: pokemonLocationData.id,
-          imgUrl,
+        imgUrl,
       };
     })
-	);
+  );
 
-    setLocations(locationData);
+    setLocations({...locations, data: locationData});
   };
-
 
   useEffect(() => {
    fetchLocationData()
@@ -31,9 +33,15 @@ export const StageSelectScene = ({ sceneSwitch }) => {
     <div>
       <h1>Locations</h1>
       <ul>
-        {locations.map((location) => (
-          <li key={location.name} onClick={() => sceneSwitch('encounter', location.url)}>
-            <img src={location.imgUrl} alt={location.name} />
+        {locations.data.map((location) => (
+          <li 
+		  key={location.name} 
+		  onClick={() => {
+			setLocations({...locations, selectedLocation: location});
+			console.log("Selected location:", location);
+		  }}
+		  className={locations.selectedLocation === location ? "selected" : ""}
+		> <img src={location.imgUrl} alt={location.name} />
             <span>{location.name}</span>
           </li>
         ))}

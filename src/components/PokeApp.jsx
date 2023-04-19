@@ -1,7 +1,8 @@
 import { useState } from "react"
 import WelcomeScene from "./Scenes/WelcomeScene"
 import NewPlayerScene from "./Scenes/NewPlayerScene"
-import StageSelectScene from "./Scenes/StageSelectScene"
+import {StageSelectScene} from "./Scenes/StageSelectScene"
+
 
 export default function PokeApp({ defaultScene }) {
 	const [currentScene, setCurrentScene] = useState(defaultScene || "welcome")

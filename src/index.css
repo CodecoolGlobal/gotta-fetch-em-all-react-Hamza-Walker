@@ -16,3 +16,19 @@ body {
 .error {
 	color: red;
 }
+
+li {
+	display: inline-block;
+	margin: 10px;
+  }
+  
+  li img {
+	width: 200px;
+	height: 200px;
+	border: 2px solid transparent;
+	cursor: pointer;
+  }
+  
+  li img.selected {
+	border-color: red;
+  }
