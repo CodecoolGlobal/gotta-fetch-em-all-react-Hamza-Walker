@@ -1,17 +1,52 @@
-import React, { useContext } from "react"
-import Scene from "./Scene"
-import { SceneContext } from "../PokeApp"
+import React, { useState, useEffect } from "react"
+import { locationImages, getPokemonLocation } from "../Utils"
 
-export default function StageSelectScene() {
-	const scene = useContext(SceneContext)
+export const StageSelectScene = ({ sceneSwitch }) => {
+	const [locations, setLocations] = useState({
+		data: [],
+		selectedLocation: null
+	})
+
+	const fetchLocationData = async () => {
+		const locationEntries = Object.entries(locationImages)
+
+		const locationData = await Promise.all(
+			locationEntries.map(async ([locationName, imgUrl]) => {
+				const pokemonLocationData = await getPokemonLocation(locationName)
+				return {
+					name: locationName,
+					id: pokemonLocationData.id,
+					imgUrl
+				}
+			})
+		)
+
+		setLocations({ ...locations, data: locationData })
+	}
+
+	useEffect(() => {
+		fetchLocationData()
+	}, [])
+
 	return (
-		<Scene name="stage-select">
-			<h1>StageSelectScene</h1>
-			<p>
-				Here Player select a stage. there is a selection-grid on the left and a stage preview at the right side.
-			</p>
-			<p>The button below leads to a page which does not exist. It shows an error message</p>
-			<button onClick={() => scene.nextScene("aTypoOrSomething")}>I will fail</button>
-		</Scene>
+		<div>
+			<h1>Locations</h1>
+			<ul>
+				{locations.data.map(location => (
+					<li
+						key={location.name}
+						onClick={() => {
+							setLocations({ ...locations, selectedLocation: location })
+							console.log("Selected location:", location)
+						}}
+						className={locations.selectedLocation === location ? "selected" : ""}
+					>
+						{" "}
+						<img src={location.imgUrl} alt={location.name} />
+						<span>{location.name}</span>
+					</li>
+				))}
+			</ul>
+		</div>
 	)
 }

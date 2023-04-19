@@ -1,7 +1,8 @@
 import { createContext, useState } from "react"
 import WelcomeScene from "./Scenes/WelcomeScene"
 import NewPlayerScene from "./Scenes/NewPlayerScene"
-import StageSelectScene from "./Scenes/StageSelectScene"
+import {StageSelectScene} from "./Scenes/StageSelectScene"
+
 
 export const SceneContext = createContext()
 export const GameStateContext = createContext()
