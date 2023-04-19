@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import Scene from "./Scene"
+import { SceneContext } from "../PokeApp"
 
-export default function WelcomeScene(sceneSwitch) {
+export default function WelcomeScene() {
+	const scene = useContext(SceneContext)
 	const [remaining, setRemaining] = useState(3500)
 
 	useEffect(() => {
@@ -10,7 +12,7 @@ export default function WelcomeScene(sceneSwitch) {
 				setRemaining(remaining - 1000)
 			}, 1000)
 		} else {
-			sceneSwitch("newPlayer")
+			scene.nextScene("newPlayer")
 		}
 	}, [remaining])
 
