@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { locationImages, getPokemonLocation, getPokemonLocationArea, getPokemonByName } from "../Utils";
+import { SceneContext } from "../PokeApp";
+
 
 export const StageSelectScene = ({ sceneSwitch }) => {
   const [locations, setLocations] = useState({
@@ -76,8 +78,8 @@ export const StageSelectScene = ({ sceneSwitch }) => {
 			<div className="encountered-pokemon">
           {locations.pokemonEncounters.map((pokemon, index) => (
             <img key={`${pokemon.name}-${index}`} src={pokemon.image} alt={pokemon.name} onClick={() => 		
-			setLocations({...locations, ChallangePokemon: pokemon.name},
-				console.log(pokemon.name) )} />
+			setLocations({...locations, ChallangePokemon: pokemon},
+				console.log(pokemon) )} />
           	))}
         </div>
 		</div>

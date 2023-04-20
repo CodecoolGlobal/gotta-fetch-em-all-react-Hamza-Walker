@@ -95,6 +95,7 @@ body {
 	right: 0;
 	top: 0;
 	bottom: 0;
+	height: 280px;;
 	width: 450px;
 	aspect-ratio: 1;
 }
@@ -102,3 +103,13 @@ body {
 .gap-1 {
 	gap: 1em;
 }
+.encountered-pokemon  {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	margin: 0%; 
+	background-color: #1aaef37a;
+	width: 450px;
+	border-radius: 5%;
+	height: 350px;
+	
+ }
