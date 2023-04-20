@@ -1,15 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { locationImages, getPokemonLocation, getPokemonLocationArea, getPokemonByName } from "../Utils";
 import { SceneContext } from "../PokeApp";
 
 
 export const StageSelectScene = ({ sceneSwitch }) => {
-  const [locations, setLocations] = useState({
-    data: [],
-    selectedLocation: null,
-    pokemonEncounters: [],
-  });
+//   const [locations, setLocations] = useState({
+//     data: [],
+//     selectedLocation: null,
+//     pokemonEncounters: [],
+// 	   ChallangePokemon: null,
+// 	   playerPokemon:null,
 
+//   });
+	const { locations,setLocations } = useContext(SceneContext);
   const fetchLocationData = async () => {
     const locationEntries = Object.entries(locationImages);
 

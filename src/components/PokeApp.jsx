@@ -9,7 +9,14 @@ export const GameStateContext = createContext()
 
 export default function PokeApp({ defaultScene }) {
 	const [currentScene, setCurrentScene] = useState(defaultScene || "welcome")
-
+	const [locations, setLocations] = useState({
+		data: [],
+		selectedLocation: null,
+		pokemonEncounters: [],
+		   ChallangePokemon: null,
+		   playerPokemon:null,
+	
+	  });
 	function nextScene(scene) {
 		//TODO: scene transition
 		//			maybe use animation library
@@ -29,9 +36,14 @@ export default function PokeApp({ defaultScene }) {
 			</div>
 		)
 	}
+	const provider = {
+		nextScene,
+		locations,
+		setLocations
+	}
 
 	return (
-		<SceneContext.Provider value={{ nextScene }}>
+		<SceneContext.Provider value={ provider }>
 			<GameStateContext.Provider value={null}>{scenes[currentScene] ?? scenes.error}</GameStateContext.Provider>
 		</SceneContext.Provider>
 	)
