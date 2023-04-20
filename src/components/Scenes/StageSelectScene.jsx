@@ -3,16 +3,10 @@ import { locationImages, getPokemonLocation, getPokemonLocationArea, getPokemonB
 import { SceneContext } from "../PokeApp";
 
 
-export const StageSelectScene = ({ sceneSwitch }) => {
-//   const [locations, setLocations] = useState({
-//     data: [],
-//     selectedLocation: null,
-//     pokemonEncounters: [],
-// 	   ChallangePokemon: null,
-// 	   playerPokemon:null,
+export default function StageSelectScene({ sceneSwitch }) {
+  const { locations, setLocations } = useContext(SceneContext);
+  const { selectedPokemon, selectedTrainer } = locations;
 
-//   });
-	const { locations,setLocations } = useContext(SceneContext);
   const fetchLocationData = async () => {
     const locationEntries = Object.entries(locationImages);
 
@@ -56,9 +50,27 @@ export const StageSelectScene = ({ sceneSwitch }) => {
   }, [locations.selectedLocation]);
 
   return (
-    <div>
+    <div className="stage-select-scene">
       <h1>Locations</h1>
       <div className="flex-row gap-1">
+        <div className="stage-select-left-container">
+          {selectedTrainer && (
+            <div className="stage-select-trainer-card">
+              <img src={selectedTrainer} alt="Selected Trainer" />
+            </div>
+          )}
+          {selectedPokemon && (
+            <div className="stage-select-pokemon-card">
+              <img
+                src={
+                  selectedPokemon.sprites.versions["generation-v"]["black-white"].animated
+                    .front_default
+                }
+                alt={selectedPokemon.name}
+              />
+            </div>
+          )}
+        </div>
         <div className="grid-container">
           {locations.data.map((location) => (
             <div
@@ -72,22 +84,20 @@ export const StageSelectScene = ({ sceneSwitch }) => {
               <div>{location.name}</div>
             </div>
           ))}
-		  
         </div>
-		<div className="selected-img-and-pokemons-div">
-			{locations.selectedLocation && (
-			<img src={locations.selectedLocation.imgUrl} alt={locations.selectedLocation.name} className="selected-img"/>
-				)}
-			<div className="encountered-pokemon">
-          {locations.pokemonEncounters.map((pokemon, index) => (
-            <img key={`${pokemon.name}-${index}`} src={pokemon.image} alt={pokemon.name} onClick={() => 		
-			setLocations({...locations, ChallangePokemon: pokemon},
-				console.log(pokemon) )} />
-          	))}
+        <div className="selected-img-and-pokemons-div">
+          {locations.selectedLocation && (
+            <img src={locations.selectedLocation.imgUrl} alt={locations.selectedLocation.name} className="selected-img" />
+          )}
+          <div className="encountered-pokemon">
+            {locations.pokemonEncounters.map((pokemon, index) => (
+              <img key={`${pokemon.name}-${index}`} src={pokemon.image} alt={pokemon.name} onClick={() =>
+                setLocations({ ...locations, ChallangePokemon: pokemon },
+                  console.log(pokemon))} />
+            ))}
+          </div>
         </div>
-		</div>
-        
       </div>
     </div>
-  );
+  );  
 };
