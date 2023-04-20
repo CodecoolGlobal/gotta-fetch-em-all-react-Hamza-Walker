@@ -19,6 +19,7 @@
 
 	font-variant-caps: petite-caps;
 }
+.pokemon-card.selected,
 .pokemon-card:hover {
 	box-shadow: 0 0 0 2px blue;
 }

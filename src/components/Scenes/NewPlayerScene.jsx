@@ -9,8 +9,10 @@ const starterPokemonIds = [1, 4, 7]
 export default function NewPlayerScene() {
 	const scene = useContext(SceneContext)
 	const gameState = useContext(GameStateContext)
-	const pokemonSelection = useRef()
+	const pokemonSelection = useRef(null)
+	const playerName = useRef("")
 	const [starterPokemon, setStarterPokemon] = useState([])
+	const [selectedPokemon, setSelectedPokemon] = useState(null)
 
 	useEffect(() => {
 		const getPokemonUrl = id => `https://pokeapi.co/api/v2/pokemon/${id}`
@@ -22,22 +24,35 @@ export default function NewPlayerScene() {
 		getFromApi()
 	}, [])
 
+	function handleSelectPokemon(pokemon) {
+		setSelectedPokemon(pokemon)
+	}
+	function handleSubmit(e) {
+		e.preventDefault()
+
+		gameState.player.setName(playerName.current.value)
+		gameState.player.setPokemon([selectedPokemon])
+
+		scene.nextScene("stageSelect")
+	}
+
 	if (!starterPokemon?.length) return <div>Loading ...</div>
 
 	return (
 		<Scene name="new-player">
 			<h2>New Game</h2>
-			<form className="flex-column gap-05">
-				<input
-					type="text"
-					id="player-name"
-					placeholder="Please enter your name."
-					onChange={validatePlayerName}
-				/>
-				<h3>Select your starter pokémon</h3>
+			<form className="flex-column gap-05" onSubmit={handleSubmit}>
+				<input ref={playerName} type="text" id="player-name" placeholder="Please enter your name." />
+				<h3>Pick a starter pokémon</h3>
 				<div ref={pokemonSelection} className="flex-row gap-025">
 					{starterPokemon.map((pokemon, index) => (
-						<div key={index} className="flex-column align-spacebetween pokemon-card">
+						<div
+							key={index}
+							className={`flex-column align-spacebetween pokemon-card${
+								selectedPokemon && selectedPokemon.name === pokemon.name ? " selected" : ""
+							}`}
+							onClick={() => handleSelectPokemon(pokemon)}
+						>
 							<img src={pokemon.sprites.versions["generation-v"]["black-white"].animated.front_default} />
 							<h3>{`${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1)}`}</h3>
 							<ul>
@@ -58,14 +73,12 @@ export default function NewPlayerScene() {
 					))}
 				</div>
 				<div className="flex-row button-row">
-					<button onClick={() => scene.nextScene("menu")}>Back</button>
-					<button onClick={() => scene.nextScene("stageSelect")}>Next</button>
+					<button onClick={() => scene.nextScene("menu")} type="submit">
+						Back
+					</button>
+					<button disabled={playerName.current.value === "" || selectedPokemon === null}>Next</button>
 				</div>
 			</form>
 		</Scene>
 	)
-}
-
-function validatePlayerName(e) {
-	console.log(e.target.value)
 }

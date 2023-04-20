@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import { locationImages, getPokemonLocation } from "../Utils"
+import { GameStateContext } from "../PokeApp"
 
 export const StageSelectScene = ({ sceneSwitch }) => {
+	const gameState = useContext(GameStateContext)
 	const [locations, setLocations] = useState({
 		data: [],
 		selectedLocation: null
@@ -31,6 +33,7 @@ export const StageSelectScene = ({ sceneSwitch }) => {
 
 	return (
 		<div>
+			<pre>{JSON.stringify(gameState, null, 2)}</pre>
 			<h1>Locations</h1>
 			<div className="flex-row gap-1">
 				<div className="grid-container">
