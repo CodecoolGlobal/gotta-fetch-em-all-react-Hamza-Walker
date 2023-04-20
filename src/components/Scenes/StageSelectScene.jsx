@@ -33,7 +33,13 @@ export const StageSelectScene = ({ sceneSwitch }) => {
 
 	return (
 		<div>
-			<pre>{JSON.stringify(gameState, null, 2)}</pre>
+			<pre>
+				{JSON.stringify(
+					{ name: gameState.player.name, pokemon: gameState.player.pokemon.map(p => p.name) },
+					null,
+					2
+				)}
+			</pre>
 			<h1>Locations</h1>
 			<div className="flex-row gap-1">
 				<div className="grid-container">

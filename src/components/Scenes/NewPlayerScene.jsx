@@ -30,13 +30,13 @@ export default function NewPlayerScene() {
 	function handleSubmit(e) {
 		e.preventDefault()
 
-		gameState.player.setName(playerName.current.value)
-		gameState.player.setPokemon([selectedPokemon])
+		gameState.setPlayerName(playerName.current.value)
+		gameState.setPlayerPokemon([selectedPokemon])
 
 		scene.nextScene("stageSelect")
 	}
 
-	if (!starterPokemon?.length) return <div>Loading ...</div>
+	if (!starterPokemon.length) return <div>Loading ...</div>
 
 	return (
 		<Scene name="new-player">

@@ -8,7 +8,7 @@ export const SceneContext = createContext()
 export const GameStateContext = createContext()
 
 export default function PokeApp({ defaultScene }) {
-	const [gameState, setGameState] = useState({})
+	const [player, setPlayer] = useState({})
 	const [currentScene, setCurrentScene] = useState(defaultScene || "menu")
 
 	function nextScene(scene) {
@@ -16,11 +16,11 @@ export default function PokeApp({ defaultScene }) {
 		//			maybe use animation library
 		setCurrentScene(scene)
 	}
-	function setName(name) {
-		setGameState(prev => ({ ...prev, player: name }))
+	function setPlayerName(name) {
+		setPlayer(prev => ({ ...prev, name }))
 	}
-	function setPokemon(pokemon) {
-		setGameState(prev => ({ ...prev, pokemon }))
+	function setPlayerPokemon(pokemon) {
+		setPlayer(prev => ({ ...prev, pokemon }))
 	}
 
 	const scenes = {
@@ -39,7 +39,7 @@ export default function PokeApp({ defaultScene }) {
 
 	return (
 		<SceneContext.Provider value={{ nextScene }}>
-			<GameStateContext.Provider value={{ gameState, player: { setName, setPokemon } }}>
+			<GameStateContext.Provider value={{ player, setPlayerName, setPlayerPokemon }}>
 				{scenes[currentScene] ?? scenes.error}
 			</GameStateContext.Provider>
 		</SceneContext.Provider>
