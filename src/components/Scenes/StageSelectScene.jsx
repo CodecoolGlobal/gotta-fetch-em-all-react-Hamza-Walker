@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react"
+import Scene from "./Scene"
 import { locationImages, getPokemonLocation, getPokemonLocationArea, getPokemonByName } from "../Utils"
-import { SceneContext } from "../PokeApp"
+import { GameStateContext, SceneContext } from "../PokeApp"
 
 export const StageSelectScene = ({ sceneSwitch }) => {
 	//   const [locations, setLocations] = useState({
@@ -11,7 +12,8 @@ export const StageSelectScene = ({ sceneSwitch }) => {
 	// 	   playerPokemon:null,
 
 	//   });
-	const { locations, setLocations } = useContext(SceneContext)
+	const gameState = useContext(GameStateContext)
+	const { locations, setLocations } = gameState
 	const fetchLocationData = async () => {
 		const locationEntries = Object.entries(locationImages)
 
@@ -58,7 +60,7 @@ export const StageSelectScene = ({ sceneSwitch }) => {
 	}, [locations.selectedLocation])
 
 	return (
-		<div>
+		<Scene name="stage-select">
 			<h1>Locations</h1>
 			<div className="flex-row gap-1">
 				<div className="grid-container">
@@ -89,14 +91,12 @@ export const StageSelectScene = ({ sceneSwitch }) => {
 								key={`${pokemon.name}-${index}`}
 								src={pokemon.image}
 								alt={pokemon.name}
-								onClick={() =>
-									setLocations({ ...locations, ChallangePokemon: pokemon }, console.log(pokemon))
-								}
+								onClick={() => setLocations({ ...locations, ChallangePokemon: pokemon })}
 							/>
 						))}
 					</div>
 				</div>
 			</div>
-		</div>
+		</Scene>
 	)
 }

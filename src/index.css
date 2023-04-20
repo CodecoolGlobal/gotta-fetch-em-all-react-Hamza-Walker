@@ -24,12 +24,14 @@ button {
 
 body {
 	background-image: url(../Images/pokebackground.png);
-  	background-size: cover;
+	background-size: cover;
 
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
+
+	padding: 1em;
 
 	height: 100vh;
 	background: url(./assets/Images/background.jpg);
@@ -63,14 +65,11 @@ header > img {
 	justify-content: center;
 	align-items: center;
 }
-<<<<<<< HEAD
-=======
 .align-spacebetween {
 	justify-content: space-between;
 	align-items: center;
 }
 
->>>>>>> dev-marcus
 .location-card {
 	position: relative;
 	width: 150px;
@@ -116,7 +115,6 @@ header > img {
 	opacity: 1;
 	transition-delay: 0s;
 }
-  
 
 .grid-container {
 	display: grid;
@@ -129,7 +127,7 @@ header > img {
 	right: 0;
 	top: 0;
 	bottom: 0;
-	height: 280px;;
+	height: 280px;
 	width: 450px;
 	aspect-ratio: 1;
 }
@@ -143,18 +141,17 @@ header > img {
 .gap-1 {
 	gap: 1em;
 }
-.encountered-pokemon  {
+.encountered-pokemon {
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
-	margin: 0%; 
+	margin: 0%;
 	background-color: #1aaef37a;
 	width: 450px;
 	border-radius: 5%;
 	height: 350px;
-	
- }
+}
 
- .pokemon-card {
+.pokemon-card {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -196,4 +193,3 @@ header > img {
 .trainer-card:hover {
 	transform: scale(1.05);
 }
-
