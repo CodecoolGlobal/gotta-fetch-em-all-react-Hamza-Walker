@@ -13,7 +13,7 @@ export default function PokeApp({ defaultScene }) {
 		data: [],
 		selectedLocation: null,
 		pokemonEncounters: [],
-		ChallangePokemon: null,
+		challengePokemon: null,
 		playerPokemon: null,
 		selectedPokemon: null,
 		selectedTrainer: null
@@ -28,6 +28,9 @@ export default function PokeApp({ defaultScene }) {
 	}
 	function setPlayerPokemon(pokemon) {
 		setPlayer(prev => ({ ...prev, pokemon }))
+	}
+	function setPlayerAvatar(avatar) {
+		setPlayer(prev => ({ ...prev, avatar }))
 	}
 
 	const scenes = {
@@ -51,7 +54,9 @@ export default function PokeApp({ defaultScene }) {
 
 	return (
 		<SceneContext.Provider value={{ nextScene }}>
-			<GameStateContext.Provider value={{ player, locations, setLocations, setPlayerName, setPlayerPokemon }}>
+			<GameStateContext.Provider
+				value={{ player, locations, setPlayerName, setPlayerPokemon, setPlayerAvatar, setLocations }}
+			>
 				{scenes[currentScene] ?? scenes.error}
 			</GameStateContext.Provider>
 		</SceneContext.Provider>

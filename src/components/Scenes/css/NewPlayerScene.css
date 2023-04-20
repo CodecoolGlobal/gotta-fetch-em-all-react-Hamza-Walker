@@ -9,17 +9,20 @@
 	padding: 0.5em 1em;
 }
 
-.pokemon-card {
-	width: 150px;
-	height: 200px;
-	padding: 1em;
+.pokemon-card,
+.trainer-card {
+	width: 175px;
+	border: 2px solid black;
 	background: #fff;
-	border: 1px solid black;
-	border-radius: 0.25em;
-
+	padding: 1.5em;
 	font-variant-caps: petite-caps;
 }
+
+.pokemon-card {
+	height: 250px;
+}
 .pokemon-card.selected,
+.trainer-card.selected,
 .pokemon-card:hover {
 	box-shadow: 0 0 0 2px blue;
 }
@@ -27,8 +30,21 @@
 	list-style: none;
 	width: 100%;
 }
-
 .new-player-scene .button-row {
 	justify-content: flex-end;
 	gap: 2em;
+}
+
+.trainer-card {
+	height: 200px;
+	padding: 1em;
+}
+
+.trainer-card > img {
+	max-width: 100%;
+	max-height: 85%;
+}
+
+.trainer-card:hover {
+	transform: scale(1.05);
 }

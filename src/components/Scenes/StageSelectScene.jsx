@@ -55,7 +55,7 @@ export default function StageSelectScene({ sceneSwitch }) {
 	}, [locations.selectedLocation])
 
 	return (
-		<div>
+		<Scene name="stage-select">
 			<h1>Locations</h1>
 			<div className="flex-row gap-1">
 				<div className="grid-container">
@@ -87,13 +87,13 @@ export default function StageSelectScene({ sceneSwitch }) {
 								src={pokemon.image}
 								alt={pokemon.name}
 								onClick={() =>
-									setLocations({ ...locations, ChallangePokemon: pokemon }, console.log(pokemon))
+									setLocations({ ...locations, challengePokemon: pokemon }, console.log(pokemon))
 								}
 							/>
 						))}
 					</div>
 				</div>
 			</div>
-		</div>
+		</Scene>
 	)
 }
