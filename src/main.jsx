@@ -6,6 +6,6 @@ import PokeApp from "./components/PokeApp"
 // during development change 'defaultScene' to whatever scene you work on ;)
 ReactDOM.createRoot(document.querySelector("main")).render(
 	<React.StrictMode>
-		<PokeApp defaultScene={"newPlayer"} />
+		<PokeApp defaultScene={"welcome"} />
 	</React.StrictMode>
 )

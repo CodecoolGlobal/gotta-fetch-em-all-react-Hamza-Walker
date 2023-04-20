@@ -12,7 +12,7 @@ export default function WelcomeScene() {
 				setRemaining(remaining - 1000)
 			}, 1000)
 		} else {
-			scene.nextScene("newPlayer")
+			scene.nextScene("menu")
 		}
 	}, [remaining])
 

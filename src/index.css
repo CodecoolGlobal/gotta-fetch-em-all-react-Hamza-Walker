@@ -1,16 +1,40 @@
+@font-face {
+	font-family: "PokemonGB";
+	src: url(./assets/fonts/pokemon-gb-font/PokemonGb-RAeo.ttf);
+}
+
+body,
+input,
+button {
+	font-family: PokemonGB;
+}
+
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+
+	/* outline: 1px solid red; */
 }
 
 body {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 
-	min-height: 100svh;
+	height: 100vh;
+	background: url(./assets/Images/background.jpg);
+	background-size: cover;
+	image-rendering: pixelated;
+	backdrop-filter: blur(8px);
+}
+
+header {
+	height: 200px;
+}
+header > img {
+	height: 100%;
 }
 
 .bold {
@@ -29,6 +53,10 @@ body {
 }
 .align-centered {
 	justify-content: center;
+	align-items: center;
+}
+.align-spacebetween {
+	justify-content: space-between;
 	align-items: center;
 }
 
@@ -67,6 +95,12 @@ body {
 	aspect-ratio: 1;
 }
 
+.gap-025 {
+	gap: 0.25em;
+}
+.gap-05 {
+	gap: 0.5em;
+}
 .gap-1 {
 	gap: 1em;
 }

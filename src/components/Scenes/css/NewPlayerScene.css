@@ -4,15 +4,30 @@
 	gap: 0.5em;
 }
 
-.starter-pokemon-selection {
-	gap: 0.25em;
-}
-.starter-pokemon-selection > div {
+.new-player-scene input,
+.new-player-scene button {
 	padding: 0.5em 1em;
+}
+
+.pokemon-card {
+	width: 150px;
+	height: 200px;
+	padding: 1em;
+	background: #fff;
 	border: 1px solid black;
 	border-radius: 0.25em;
+
+	font-variant-caps: petite-caps;
 }
-.starter-pokemon-selection .pokemon-card {
-	width: 100px;
-	height: 150px;
+.pokemon-card:hover {
+	box-shadow: 0 0 0 2px blue;
+}
+.pokemon-card ul {
+	list-style: none;
+	width: 100%;
+}
+
+.new-player-scene .button-row {
+	justify-content: flex-end;
+	gap: 2em;
 }

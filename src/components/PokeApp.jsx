@@ -1,6 +1,7 @@
 import { createContext, useState } from "react"
 import WelcomeScene from "./Scenes/WelcomeScene"
 import NewPlayerScene from "./Scenes/NewPlayerScene"
+import MenuScene from "./Scenes/MenuScene"
 import { StageSelectScene } from "./Scenes/StageSelectScene"
 
 export const SceneContext = createContext()
@@ -18,6 +19,7 @@ export default function PokeApp({ defaultScene }) {
 
 	const scenes = {
 		welcome: <WelcomeScene />,
+		menu: <MenuScene />,
 		newPlayer: <NewPlayerScene />,
 		stageSelect: <StageSelectScene />,
 
@@ -32,7 +34,9 @@ export default function PokeApp({ defaultScene }) {
 
 	return (
 		<SceneContext.Provider value={{ nextScene }}>
-			<GameStateContext.Provider value={null}>{scenes[currentScene] ?? scenes.error}</GameStateContext.Provider>
+			<GameStateContext.Provider value={setGameState}>
+				{scenes[currentScene] ?? scenes.error}
+			</GameStateContext.Provider>
 		</SceneContext.Provider>
 	)
 }
