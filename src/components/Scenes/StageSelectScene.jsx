@@ -94,6 +94,7 @@ export default function StageSelectScene({ sceneSwitch }) {
 					</div>
 				</div>
 			</div>
+			<button onClick={() => scene.nextScene("testScene")}>clickedclick</button>
 		</Scene>
 	)
 }
