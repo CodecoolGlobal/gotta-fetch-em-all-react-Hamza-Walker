@@ -75,8 +75,10 @@ export const StageSelectScene = ({ sceneSwitch }) => {
 				)}
 			<div className="encountered-pokemon">
           {locations.pokemonEncounters.map((pokemon, index) => (
-            <img key={`${pokemon.name}-${index}`} src={pokemon.image} alt={pokemon.name} />
-          ))}
+            <img key={`${pokemon.name}-${index}`} src={pokemon.image} alt={pokemon.name} onClick={() => 		
+			setLocations({...locations, ChallangePokemon: pokemon.name},
+				console.log(pokemon.name) )} />
+          	))}
         </div>
 		</div>
         
