@@ -1,30 +1,36 @@
 import { createContext, useState } from "react"
 import WelcomeScene from "./Scenes/WelcomeScene"
 import NewPlayerScene from "./Scenes/NewPlayerScene"
-import {StageSelectScene} from "./Scenes/StageSelectScene"
-
+import MenuScene from "./Scenes/MenuScene"
+import { StageSelectScene } from "./Scenes/StageSelectScene"
 
 export const SceneContext = createContext()
 export const GameStateContext = createContext()
 
 export default function PokeApp({ defaultScene }) {
-	const [currentScene, setCurrentScene] = useState(defaultScene || "welcome")
+	const [player, setPlayer] = useState({})
+	const [currentScene, setCurrentScene] = useState(defaultScene || "menu")
 	const [locations, setLocations] = useState({
 		data: [],
 		selectedLocation: null,
 		pokemonEncounters: [],
-		   ChallangePokemon: null,
-		   playerPokemon:null,
-	
-	  });
+		ChallangePokemon: null,
+		playerPokemon: null
+	})
 	function nextScene(scene) {
 		//TODO: scene transition
 		//			maybe use animation library
 		setCurrentScene(scene)
 	}
+	function setPlayerName(name) {
+		setPlayer(prev => ({ ...prev, name }))
+	}
+	function setPlayerPokemon(pokemon) {
+		setPlayer(prev => ({ ...prev, pokemon }))
+	}
 
 	const scenes = {
-		welcome: <WelcomeScene />,
+		menu: <MenuScene />,
 		newPlayer: <NewPlayerScene />,
 		stageSelect: <StageSelectScene />,
 
@@ -36,15 +42,17 @@ export default function PokeApp({ defaultScene }) {
 			</div>
 		)
 	}
-	const provider = {
-		nextScene,
-		locations,
-		setLocations
-	}
+	// const provider = {
+	// 	nextScene,
+	// 	locations,
+	// 	setLocations
+	// }
 
 	return (
-		<SceneContext.Provider value={ provider }>
-			<GameStateContext.Provider value={null}>{scenes[currentScene] ?? scenes.error}</GameStateContext.Provider>
+		<SceneContext.Provider value={{ nextScene }}>
+			<GameStateContext.Provider value={{ player, locations, setLocations, setPlayerName, setPlayerPokemon }}>
+				{scenes[currentScene] ?? scenes.error}
+			</GameStateContext.Provider>
 		</SceneContext.Provider>
 	)
 }

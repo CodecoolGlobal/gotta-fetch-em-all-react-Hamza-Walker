@@ -1,7 +1,25 @@
+@font-face {
+	font-family: "PokemonGB";
+	src: url(./assets/fonts/pokemon-gb-font/PokemonGb-RAeo.ttf);
+}
+
+body,
+input,
+button {
+	font-family: PokemonGB;
+	border: 2px solid black;
+}
+
+button {
+	background-color: white;
+}
+
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+
+	/* outline: 1px solid red; */
 }
 
 body {
@@ -10,13 +28,21 @@ body {
 
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 
-	margin: 0;
-	padding: 0;
+	height: 100vh;
+	background: url(./assets/Images/background.jpg);
+	background-size: cover;
+	image-rendering: pixelated;
+	backdrop-filter: blur(8px);
+}
 
-	min-height: 100svh;
+header {
+	height: 200px;
+}
+header > img {
+	height: 100%;
 }
 
 .bold {
@@ -37,6 +63,14 @@ body {
 	justify-content: center;
 	align-items: center;
 }
+<<<<<<< HEAD
+=======
+.align-spacebetween {
+	justify-content: space-between;
+	align-items: center;
+}
+
+>>>>>>> dev-marcus
 .location-card {
 	position: relative;
 	width: 150px;
@@ -100,6 +134,12 @@ body {
 	aspect-ratio: 1;
 }
 
+.gap-025 {
+	gap: 0.25em;
+}
+.gap-05 {
+	gap: 0.5em;
+}
 .gap-1 {
 	gap: 1em;
 }
