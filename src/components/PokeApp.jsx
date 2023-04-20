@@ -3,6 +3,7 @@ import WelcomeScene from "./Scenes/WelcomeScene"
 import NewPlayerScene from "./Scenes/NewPlayerScene"
 import MenuScene from "./Scenes/MenuScene"
 import { StageSelectScene } from "./Scenes/StageSelectScene"
+import StageSelectScene from "./Scenes/StageSelectScene"
 
 export const SceneContext = createContext()
 export const GameStateContext = createContext()
@@ -15,7 +16,9 @@ export default function PokeApp({ defaultScene }) {
 		selectedLocation: null,
 		pokemonEncounters: [],
 		ChallangePokemon: null,
-		playerPokemon: null
+		playerPokemon: null,
+		selectedPokemon: null,
+		selectedTrainer: null
 	})
 	function nextScene(scene) {
 		//TODO: scene transition

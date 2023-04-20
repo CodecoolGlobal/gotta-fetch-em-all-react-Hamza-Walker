@@ -163,6 +163,9 @@ header > img {
 	box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
 	transition: transform 0.2s ease;
 	cursor: pointer;
+	width: 100px;
+	height: 100px;
+	object-fit: cover;
 }
 
 .pokemon-card:hover {
@@ -182,6 +185,7 @@ header > img {
 	cursor: pointer;
 	width: 100px;
 	height: 100px;
+	object-fit: cover;
 }
 
 .trainer-card > img {
@@ -192,4 +196,42 @@ header > img {
 
 .trainer-card:hover {
 	transform: scale(1.05);
+}
+
+.left-container {
+	position: fixed;
+	top: 10px;
+	left: 10px;
+	background-color: rgba(0, 0, 0, 0.5);
+	border-radius: 5px;
+	padding: 1em;
+}
+
+.stage-select-left-container {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	background-color: rgba(0, 0, 0, 0.3);
+	padding: 1em;
+	border-radius: 10px;
+}
+
+.stage-select-trainer-card {
+	width: 100px;
+	height: 100px;
+	margin-bottom: 1em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.stage-select-trainer-card img {
+	object-fit: contain;
+	width: 100%;
+	height: 100%;
+}
+
+.stage-select-pokemon-card {
+	width: 100px;
+	height: 100px;
 }
