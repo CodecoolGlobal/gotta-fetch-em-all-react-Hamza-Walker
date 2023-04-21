@@ -76,6 +76,8 @@ export default function StageSelectScene({ sceneSwitch }) {
 					))}
 				</div>
 				<div className="selected-img-and-pokemons-div">
+				<button onClick={() => scene.nextScene("battle") }class="fight-btn">Fight</button>					
+
 					{gameVariables.selectedLocation && (
 						<img
 							src={gameVariables.selectedLocation.imgUrl}
@@ -95,7 +97,6 @@ export default function StageSelectScene({ sceneSwitch }) {
 							/>
 
 						))}
-						<button onClick={() => scene.nextScene("battleScene") }class="fight-btn">Fight</button>					
 					</div>
 				</div>
 			</div>

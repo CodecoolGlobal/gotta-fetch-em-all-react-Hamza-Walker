@@ -5,7 +5,7 @@ import "./css/BattleScene.css"
 
 export default function BattleScene() {
 	const gameState = useContext(GameStateContext)
-	const { player, locations } = gameState
+	const { player, gameVariables } = gameState
 	const scene = useContext(SceneContext)
 
 	const [enemy, setEnemy] = useState({})
@@ -16,11 +16,10 @@ export default function BattleScene() {
 	const attackButtonRef = useRef()
 
 	useEffect(() => {
-		const enemy = getRandomEncounter(locations.pokemonEncounters)
+		const enemy = getRandomEncounter(gameVariables.pokemonEncounters)
 
 		setEnemy(enemy)
 	}, [])
-const fuckoff ={}
 	useEffect(() => {
 		setTimeout(() => {
 			setPlayerHp(prev => prev - dealRandomDamage())
@@ -66,7 +65,7 @@ const fuckoff ={}
 	return (
 		<Scene name="battle">
 			<div className="battle-ground">
-				<img className="background-image" src={locations.selectedLocation.imgUrl} />
+				<img className="background-image" src={gameVariables.selectedLocation.imgUrl} />
 				<div className="selected-pokemon">
 					<progress value={playerHp} max="100" />
 					<img
