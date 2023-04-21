@@ -7,8 +7,9 @@ export default function StageSelectScene({ sceneSwitch }) {
 	const scene = useContext(SceneContext)
 	const gameState = useContext(GameStateContext)
 
-	const { locations, setLocations } = gameState
+	const { gameVariables, setGameVariables } = gameState
 	const { selectedPokemon, selectedTrainer } = gameState
+
 	const fetchLocationData = async () => {
 		const locationEntries = Object.entries(locationImages)
 
@@ -28,12 +29,12 @@ export default function StageSelectScene({ sceneSwitch }) {
 				}
 			})
 		)
-		setLocations({ ...locations, data: locationData })
+		setGameVariables({ ...gameVariables, locationsData: locationData })
 	}
 
 	const renderEncouterdPokemon = async () => {
-		if (!locations.selectedLocation) return
-		const pokemonDataPromises = locations.selectedLocation.pokemonEncounters.map(async pokemonName => {
+		if (!gameVariables.selectedLocation) return
+		const pokemonDataPromises = gameVariables.selectedLocation.pokemonEncounters.map(async pokemonName => {
 			const pokemonData = await getPokemonByName(pokemonName)
 			return {
 				name: pokemonName,
@@ -43,7 +44,7 @@ export default function StageSelectScene({ sceneSwitch }) {
 
 		const pokemonData = await Promise.all(pokemonDataPromises)
 
-		setLocations({ ...locations, pokemonEncounters: pokemonData })
+		setGameVariables({ ...gameVariables, pokemonEncounters: pokemonData })
 	}
 
 	useEffect(() => {
@@ -52,20 +53,20 @@ export default function StageSelectScene({ sceneSwitch }) {
 
 	useEffect(() => {
 		renderEncouterdPokemon()
-	}, [locations.selectedLocation])
+	}, [gameVariables.selectedLocation])
 
 	return (
 		<Scene name="stage-select">
 			<h1>Locations</h1>
 			<div className="flex-row gap-1">
 				<div className="grid-container">
-					{locations.data.map(location => (
+					{gameVariables.locationsData.map(location => (
 						<div
 							key={location.name}
 							onClick={() => {
-								setLocations({ ...locations, selectedLocation: location })
+								setGameVariables({ ...gameVariables, selectedLocation: location })
 							}}
-							className={`location-card ${locations.selectedLocation === location ? "selected" : ""}`}
+							className={`location-card ${gameVariables.selectedLocation === location ? "selected" : ""}`}
 						>
 							<img src={location.imgUrl} alt={location.name} />
 							<div>{location.name}</div>
@@ -73,21 +74,21 @@ export default function StageSelectScene({ sceneSwitch }) {
 					))}
 				</div>
 				<div className="selected-img-and-pokemons-div">
-					{locations.selectedLocation && (
+					{gameVariables.selectedLocation && (
 						<img
-							src={locations.selectedLocation.imgUrl}
-							alt={locations.selectedLocation.name}
+							src={gameVariables.selectedLocation.imgUrl}
+							alt={gameVariables.selectedLocation.name}
 							className="selected-img"
 						/>
 					)}
 					<div className="encountered-pokemon">
-						{locations.pokemonEncounters.map((pokemon, index) => (
+						{gameVariables.pokemonEncounters.map((pokemon, index) => (
 							<img
 								key={`${pokemon.name}-${index}`}
 								src={pokemon.image}
 								alt={pokemon.name}
 								onClick={() =>
-									setLocations({ ...locations, challengePokemon: pokemon }, console.log(pokemon))
+									setGameVariables({ ...gameVariables, challengePokemon: pokemon }, console.log(pokemon))
 								}
 							/>
 						))}
