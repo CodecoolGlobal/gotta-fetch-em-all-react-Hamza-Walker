@@ -1,0 +1,83 @@
+.location-card {
+	position: relative;
+	width: 150px;
+	aspect-ratio: 1;
+}
+
+.location-card > img {
+	object-fit: cover;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 150px;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	border: 2px solid #555;
+	transition: transform 0.3s ease;
+}
+
+.location-card:hover > img {
+	transform: scale(1.1);
+}
+
+.location-card > div {
+	position: absolute;
+	left: 1em;
+	top: 0.5em;
+	background-color: rgba(0, 0, 0, 0.5);
+	padding: 0.2em 0.5em;
+	color: white;
+	font-size: 0.9em;
+	font-weight: 600;
+	border-radius: 10px;
+	border: 2px solid #555;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.location-card:hover > div {
+	visibility: visible;
+	opacity: 1;
+	transition-delay: 0s;
+}
+
+.grid-container {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 0.25em;
+}
+.selected-img {
+	object-fit: cover;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	height: 280px;
+	width: 450px;
+	aspect-ratio: 1;
+}
+.encountered-pokemon {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	margin: 0%;
+	background-color: #1aaef37a;
+	width: 450px;
+	border-radius: 5%;
+	height: 350px;
+}
+.fight-btn {
+    position: absolute;
+    bottom: 0;
+    left: 63%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: blue;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

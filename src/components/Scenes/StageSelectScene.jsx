@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react"
 import Scene from "./Scene"
 import { locationImages, getPokemonLocation, getPokemonLocationArea, getPokemonByName } from "../Utils"
 import { GameStateContext, SceneContext } from "../PokeApp"
+import './css/StageSelectScene.css'
 
 export default function StageSelectScene({ sceneSwitch }) {
 	const scene = useContext(SceneContext)
@@ -92,6 +93,7 @@ export default function StageSelectScene({ sceneSwitch }) {
 								}
 							/>
 						))}
+						<button class="fight-btn">Fight</button>					
 					</div>
 				</div>
 			</div>
