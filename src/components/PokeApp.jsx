@@ -4,6 +4,7 @@ import MenuScene from "./Scenes/MenuScene"
 import StageSelectScene from "./Scenes/StageSelectScene"
 import TestScene from "./Scenes/testScene"
 import BattleScene from "./Scenes/BattleScene"
+import GameOverScene from "./Scenes/GameOverScene"
 
 export const SceneContext = createContext()
 export const GameStateContext = createContext()
@@ -34,6 +35,9 @@ export default function PokeApp({ defaultScene }) {
 	function setPlayerAvatar(avatar) {
 		setPlayer(prev => ({ ...prev, avatar }))
 	}
+	function setWinner(winner) {
+		setPlayer(prev => ({ ...prev, winner }))
+	}
 
 	const scenes = {
 		menu: <MenuScene />,
@@ -41,20 +45,8 @@ export default function PokeApp({ defaultScene }) {
 		stageSelect: <StageSelectScene />,
 		testScene: <TestScene />,
 		battle: <BattleScene />,
-
-		//TODO: remove the entry below once scenes are set in stone!
-		//			It's only to remind us of errors bc this wouldn't throw :\
-		error: (
-			<div className="bold">
-				SceneManager.jsx: scenes["<span className="error">{currentScene}</span>"] missing
-			</div>
-		)
+		gameOver: <GameOverScene />
 	}
-	// const provider = {
-	// 	nextScene,
-	// 	locations,
-	// 	setLocations
-	// }
 
 	return (
 		<SceneContext.Provider value={{ nextScene }}>

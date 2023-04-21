@@ -10,7 +10,9 @@ export default function MenuScene() {
 		<Scene name="menu">
 			<div className="flex-column align-centered gap-1">
 				<button onClick={() => scene.nextScene("newPlayer")}>New Game</button>
-				<button onClick={() => scene.nextScene("stageSelect")}>Load Game</button>
+				<button onClick={() => scene.nextScene("stageSelect")} disabled={true}>
+					Load Game
+				</button>
 			</div>
 		</Scene>
 	)

@@ -29,9 +29,12 @@ body {
 	background-size: cover;
 	image-rendering: pixelated;
 	backdrop-filter: blur(8px);
+
+	/* overflow: hidden; */
 }
 button {
 	background-color: white;
+	cursor: pointer;
 }
 
 header {
