@@ -3,6 +3,7 @@ import NewPlayerScene from "./Scenes/NewPlayerScene"
 import MenuScene from "./Scenes/MenuScene"
 import StageSelectScene from "./Scenes/StageSelectScene"
 import TestScene from "./Scenes/testScene"
+import BattleScene from "./Scenes/BattleScene"
 
 export const SceneContext = createContext()
 export const GameStateContext = createContext()
@@ -39,6 +40,7 @@ export default function PokeApp({ defaultScene }) {
 		newPlayer: <NewPlayerScene />,
 		stageSelect: <StageSelectScene />,
 		testScene: <TestScene />,
+		battle: <BattleScene />,
 
 		//TODO: remove the entry below once scenes are set in stone!
 		//			It's only to remind us of errors bc this wouldn't throw :\

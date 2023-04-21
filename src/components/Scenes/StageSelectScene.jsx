@@ -37,7 +37,8 @@ export default function StageSelectScene({ sceneSwitch }) {
 			const pokemonData = await getPokemonByName(pokemonName)
 			return {
 				name: pokemonName,
-				image: pokemonData.sprites.versions["generation-v"]["black-white"].animated.front_default
+				image: pokemonData.sprites.versions["generation-v"]["black-white"].animated.front_default,
+				stats: pokemonData.stats
 			}
 		})
 
@@ -90,10 +91,12 @@ export default function StageSelectScene({ sceneSwitch }) {
 									setLocations({ ...locations, challengePokemon: pokemon }, console.log(pokemon))
 								}
 							/>
+
 						))}
 					</div>
 				</div>
 			</div>
+			<button onClick={() => scene.nextScene('battle')}>Battle here!</button>
 			<button onClick={() => scene.nextScene("testScene")}>clickedclick</button>
 		</Scene>
 	)
