@@ -93,7 +93,7 @@ export default function StageSelectScene({ sceneSwitch }) {
 								}
 							/>
 						))}
-						<button class="fight-btn">Fight</button>					
+						<button onClick={() => scene.nextScene("battleScene") }class="fight-btn">Fight</button>					
 					</div>
 				</div>
 			</div>
