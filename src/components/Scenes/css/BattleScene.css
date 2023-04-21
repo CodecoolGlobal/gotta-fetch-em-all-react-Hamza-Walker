@@ -1,0 +1,84 @@
+.battle-scene {
+	height: 800px;
+	width: 1200px;
+}
+
+.battle-ground {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	background-color: #fafafa;
+	object-fit: contain;
+}
+.battle-ground .background-image {
+	height: 100%;
+	width: 100%;
+}
+
+.action-container {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 5em;
+	background-color: #aaa5a5;
+	padding: 1em 1em;
+}
+
+.selected-pokemon,
+.enemy-pokemon {
+	position: absolute;
+	height: 16em;
+	z-index: 1;
+}
+
+.selected-pokemon {
+	bottom: 8em;
+	left: 8em;
+}
+.enemy-pokemon progress,
+.selected-pokemon progress {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 1em;
+	background-color: green;
+	border-radius: 1em;
+	overflow: hidden;
+}
+.enemy-pokemon > img,
+.selected-pokemon > img {
+	height: 100%;
+}
+
+.enemy-pokemon {
+	top: 4em;
+	right: 8em;
+}
+
+.battle-text {
+	font-size: 24px;
+}
+.battle-actions button {
+	padding: 0.5em 1em;
+	font-size: 1.3em;
+	background-color: #ffcc00;
+	color: #000000;
+	border: none;
+}
+
+.battle-actions button:disabled {
+	background-color: #444;
+}
+.battle-actions button:hover :not(:disabled) {
+	background-color: #ffdb4d;
+}
+
+.battle-actions :last-child {
+	background-color: #ff0000;
+	color: #ffffff;
+	border: none;
+}
+
+.battle-actions :last-child:hover {
+	background-color: #ff3333;
+}
