@@ -20,7 +20,7 @@ export default function BattleScene() {
 
 		setEnemy(enemy)
 	}, [])
-
+const fuckoff ={}
 	useEffect(() => {
 		setTimeout(() => {
 			setPlayerHp(prev => prev - dealRandomDamage())
