@@ -3,7 +3,7 @@ import { GameStateContext } from "../PokeApp"
 
 export default function TestScene() {
 	const gameState = useContext(GameStateContext)
-	const { player, locations } = gameState
+	const { player, gameVariables } = gameState
 
 	return (
 		<>
@@ -21,9 +21,9 @@ export default function TestScene() {
 				)}
 			</pre>
 			<div>SELECTED LOCATION (the location we selected)</div>
-			<pre>{JSON.stringify(locations.selectedLocation, null, 2)}</pre>
+			<pre>{JSON.stringify(gameVariables.selectedLocation, null, 2)}</pre>
 			<div>POKEMON ENCOUNTERS (the images and names of thepokemon we encoutered)</div>
-			<pre>{JSON.stringify(locations.pokemonEncounters, null, 2)}</pre>
+			<pre>{JSON.stringify(gameVariables.pokemonEncounters, null, 2)}</pre>
 		</>
 	)
 }
