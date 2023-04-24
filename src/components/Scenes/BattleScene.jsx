@@ -2,13 +2,14 @@ import React, { useState, useContext, useEffect, useRef } from "react"
 import Scene from "./Scene"
 import { GameStateContext, SceneContext } from "../PokeApp"
 import "./css/BattleScene.css"
+import { pickItemFromArray } from "../../utils"
 
 export default function BattleScene() {
 	const gameState = useContext(GameStateContext)
 	const { player, gameVariables } = gameState
 	const scene = useContext(SceneContext)
 
-	const [enemy, setEnemy] = useState({})
+	const [enemy, setEnemy] = useState(null)
 	const [playerHp, setPlayerHp] = useState(100)
 	const [enemyHp, setEnemyHP] = useState(100)
 	const [isPlayerTurn, setPlayerTurn] = useState(true)
@@ -16,11 +17,16 @@ export default function BattleScene() {
 	const attackButtonRef = useRef()
 
 	useEffect(() => {
-		const enemy = getRandomEncounter(gameVariables.pokemonEncounters)
+		const enemy = pickItemFromArray(gameVariables.pokemonEncounters)
 
 		setEnemy(enemy)
 	}, [])
+
 	useEffect(() => {
+		if (isPlayerTurn) { 
+			return
+		}
+
 		setTimeout(() => {
 			setPlayerHp(prev => prev - dealRandomDamage())
 			attackButtonRef.current.disabled = false
@@ -42,7 +48,7 @@ export default function BattleScene() {
 
 		attackButtonRef.current.disabled = true
 
-		setPlayerTurn(!isPlayerTurn)
+		setPlayerTurn(prev => !prev)
 	}
 
 	function handleRun() {
@@ -53,13 +59,12 @@ export default function BattleScene() {
 		scene.nextScene("menu")
 	}
 
-	function getRandomEncounter(array) {
-		const roundedIndex = Math.floor(Math.random() * array.length)
-		return array[roundedIndex]
-	}
-
 	function dealRandomDamage() {
 		return Math.floor(Math.random() * 30)
+	}
+
+	if (!enemy) {
+		return <p>Loading enemy...</p>
 	}
 
 	return (

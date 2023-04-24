@@ -1,7 +1,9 @@
 import { useContext, useRef, useEffect, useState } from "react"
+import clsx from "clsx";
 import Scene from "./Scene"
 import { GameStateContext, SceneContext } from "../PokeApp"
 import "./css/NewPlayerScene.css"
+import { capitalize } from "../../utils";
 
 // bulbasaur, charmander, squirtle
 const starterPokemonIds = [1, 4, 7]
@@ -21,8 +23,11 @@ export default function NewPlayerScene() {
 	useEffect(() => {
 		const getPokemonUrl = id => `https://pokeapi.co/api/v2/pokemon/${id}`
 		const getFromApi = async () => {
-			const response = await Promise.all(starterPokemonIds.map(pokemonId => fetch(getPokemonUrl(pokemonId))))
-			const pokemon = await Promise.all(response.map(res => res.json()))
+			const pokemon = await Promise.all(
+				starterPokemonIds.map(
+					pokemonId => fetch(getPokemonUrl(pokemonId)).then(res => res.json())
+				)
+			)
 			setStarterPokemon(pokemon)
 		}
 		getFromApi()
@@ -56,13 +61,18 @@ export default function NewPlayerScene() {
 					{starterPokemon.map((pokemon, index) => (
 						<div
 							key={index}
-							className={`flex-column align-space-between pokemon-card${
-								selectedPokemon && selectedPokemon.name === pokemon.name ? " selected" : ""
-							}`}
+							className={clsx(
+								"flex-column",
+								"align-space-between",
+								"pokemon-card",
+								{
+									selected: selectedPokemon && selectedPokemon.name === pokemon.name
+								}
+							)}
 							onClick={() => handleSelectPokemon(pokemon)}
 						>
 							<img src={pokemon.sprites.versions["generation-v"]["black-white"].animated.front_default} />
-							<h3>{`${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1)}`}</h3>
+							<h3>{capitalize(pokemon.name)}</h3>
 							<ul className="flex-column gap-05">
 								<li className="flex-row align-space-between">
 									<div>HP</div>
@@ -101,10 +111,10 @@ export default function NewPlayerScene() {
 					</div>
 				</div>
 				<div className="flex-row button-row">
-					<button onClick={() => scene.nextScene("menu")} type="submit">
+					<button onClick={() => scene.nextScene("menu")}>
 						Back
 					</button>
-					<button disabled={playerName.current.value === "" || selectedPokemon === null || avatar === null}>
+					<button type="submit" disabled={playerName.current.value === "" || selectedPokemon === null || avatar === null}>
 						Next
 					</button>
 				</div>

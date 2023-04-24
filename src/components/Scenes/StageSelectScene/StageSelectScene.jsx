@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useContext } from "react"
-import Scene from "./Scene"
-import { locationImages, getPokemonLocation, getPokemonLocationArea, getPokemonByName } from "../Utils"
-import { GameStateContext, SceneContext } from "../PokeApp"
-import './css/StageSelectScene.css'
+import Scene from "../Scene"
+import { locationImages, getPokemonLocation, getPokemonLocationArea, getPokemonByName } from "./Utils"
+import { GameStateContext, SceneContext } from "../../PokeApp"
+import '../css/StageSelectScene.css'
 
-export default function StageSelectScene({ sceneSwitch }) {
+export default function StageSelectScene() {
 	const scene = useContext(SceneContext)
-	const gameState = useContext(GameStateContext)
-
-	const { gameVariables, setGameVariables } = gameState
-	const { selectedPokemon, selectedTrainer } = gameState
+	const {
+		gameVariables,
+		setGameVariables,
+	} = useContext(GameStateContext)
 
 	const fetchLocationData = async () => {
 		const locationEntries = Object.entries(locationImages)
@@ -18,8 +18,8 @@ export default function StageSelectScene({ sceneSwitch }) {
 			locationEntries.map(async ([locationName, imgUrl]) => {
 				const pokemonLocationData = await getPokemonLocation(locationName)
 				const pokemonLocationAreaData = await getPokemonLocationArea(pokemonLocationData.id)
-				const pokemonNames = pokemonLocationAreaData["pokemon_encounters"].map(area => {
-					return area.pokemon.name
+				const pokemonNames = pokemonLocationAreaData["pokemon_encounters"].map(encounter => {
+					return encounter.pokemon.name
 				})
 
 				return {
@@ -33,8 +33,9 @@ export default function StageSelectScene({ sceneSwitch }) {
 		setGameVariables({ ...gameVariables, locationsData: locationData })
 	}
 
-	const renderEncouterdPokemon = async () => {
+	const fetchEncouteredPokemon = async () => {
 		if (!gameVariables.selectedLocation) return
+
 		const pokemonDataPromises = gameVariables.selectedLocation.pokemonEncounters.map(async pokemonName => {
 			const pokemonData = await getPokemonByName(pokemonName)
 			return {
@@ -46,7 +47,7 @@ export default function StageSelectScene({ sceneSwitch }) {
 
 		const pokemonData = await Promise.all(pokemonDataPromises)
 
-		setGameVariables({ ...gameVariables, pokemonEncounters: pokemonData })
+		setGameVariables(state => ({ ...state, pokemonEncounters: pokemonData }))
 	}
 
 	useEffect(() => {
@@ -54,8 +55,12 @@ export default function StageSelectScene({ sceneSwitch }) {
 	}, [])
 
 	useEffect(() => {
-		renderEncouterdPokemon()
+		fetchEncouteredPokemon()
 	}, [gameVariables.selectedLocation])
+
+	if (!gameVariables.locationsData) {
+		return <p>Loading...</p>
+	}
 
 	return (
 		<Scene name="stage-select">
@@ -76,7 +81,7 @@ export default function StageSelectScene({ sceneSwitch }) {
 					))}
 				</div>
 				<div className="selected-img-and-pokemons-div">
-				<button onClick={() => scene.nextScene("battle") }class="fight-btn">Fight</button>					
+				<button onClick={() => scene.nextScene("battle")} className="fight-btn">Fight</button>					
 
 					{gameVariables.selectedLocation && (
 						<img
@@ -100,8 +105,6 @@ export default function StageSelectScene({ sceneSwitch }) {
 					</div>
 				</div>
 			</div>
-			<button onClick={() => scene.nextScene('battle')}>Battle here!</button>
-			<button onClick={() => scene.nextScene("testScene")}>clickedclick</button>
 		</Scene>
 	)
 }

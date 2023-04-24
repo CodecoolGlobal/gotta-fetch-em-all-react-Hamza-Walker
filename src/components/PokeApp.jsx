@@ -2,7 +2,6 @@ import { createContext, useState } from "react"
 import NewPlayerScene from "./Scenes/NewPlayerScene"
 import MenuScene from "./Scenes/MenuScene"
 import StageSelectScene from "./Scenes/StageSelectScene"
-import TestScene from "./Scenes/testScene"
 import BattleScene from "./Scenes/BattleScene"
 import GameOverScene from "./Scenes/GameOverScene"
 
@@ -13,7 +12,7 @@ export default function PokeApp({ defaultScene }) {
 	const [player, setPlayer] = useState({})
 	const [currentScene, setCurrentScene] = useState(defaultScene || "menu")
 	const [gameVariables, setGameVariables] = useState({
-		locationsData: [],
+		locationsData: null,
 		playerPokemon: null,
 		selectedPokemon: null,
 		selectedTrainer: null,
@@ -43,7 +42,6 @@ export default function PokeApp({ defaultScene }) {
 		menu: <MenuScene />,
 		newPlayer: <NewPlayerScene />,
 		stageSelect: <StageSelectScene />,
-		testScene: <TestScene />,
 		battle: <BattleScene />,
 		gameOver: <GameOverScene />
 	}
@@ -53,7 +51,7 @@ export default function PokeApp({ defaultScene }) {
 			<GameStateContext.Provider
 				value={{ player, gameVariables, setPlayerName, setPlayerPokemon, setPlayerAvatar, setGameVariables }}
 			>
-				{scenes[currentScene] ?? scenes.error}
+				{scenes[currentScene]}
 			</GameStateContext.Provider>
 		</SceneContext.Provider>
 	)
